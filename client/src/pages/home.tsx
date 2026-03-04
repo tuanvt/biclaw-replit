@@ -243,32 +243,30 @@ export default function Home() {
             </motion.div>
           </div>
 
-          {/* Floating alert card */}
+          {/* Floating cards — positioned below hero text */}
           <motion.div
-            initial={{ opacity: 0, x: -40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.6 }}
-            className="absolute left-4 lg:left-12 top-32 bg-white border border-border p-4 rounded-xl shadow-xl hidden lg:flex items-center gap-3 max-w-[260px]"
+            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.6 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-12"
           >
-            <div className="p-2 bg-primary/10 rounded-lg shrink-0">
-              <AlertTriangle className="w-5 h-5 text-primary" />
+            <div className="bg-white border border-border p-4 rounded-xl shadow-lg flex items-center gap-3 max-w-[280px]">
+              <div className="p-2 bg-primary/10 rounded-lg shrink-0">
+                <AlertTriangle className="w-5 h-5 text-primary" />
+              </div>
+              <div>
+                <p className="text-[10px] font-bold text-primary uppercase tracking-wider">Proactive Alert</p>
+                <p className="text-xs text-foreground font-medium mt-0.5">Caught $2K checkout error before store opened</p>
+                <p className="text-xs text-accent-foreground font-bold mt-1">Saved $2,140</p>
+              </div>
             </div>
-            <div>
-              <p className="text-[10px] font-bold text-primary uppercase tracking-wider">Proactive Alert</p>
-              <p className="text-xs text-foreground font-medium mt-0.5">Caught $2K checkout error before store opened</p>
-              <p className="text-xs text-accent-foreground font-bold mt-1">Saved $2,140</p>
-            </div>
-          </motion.div>
 
-          {/* Floating stats card */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.7 }}
-            className="absolute right-4 lg:right-12 top-44 bg-white border border-border p-4 rounded-xl shadow-xl hidden lg:flex items-center gap-3"
-          >
-            <div className="p-2 bg-accent/20 rounded-lg shrink-0">
-              <TrendingUp className="w-5 h-5 text-accent" />
-            </div>
-            <div>
-              <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">Today's Revenue</p>
-              <p className="text-lg font-display font-bold text-foreground" data-testid="text-revenue-card">$4,250</p>
+            <div className="bg-white border border-border p-4 rounded-xl shadow-lg flex items-center gap-3">
+              <div className="p-2 bg-accent/20 rounded-lg shrink-0">
+                <TrendingUp className="w-5 h-5 text-accent" />
+              </div>
+              <div>
+                <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">Today's Revenue</p>
+                <p className="text-lg font-display font-bold text-foreground" data-testid="text-revenue-card">$4,250</p>
+              </div>
             </div>
           </motion.div>
         </div>
