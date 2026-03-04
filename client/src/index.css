@@ -42,10 +42,47 @@
 
 :root {
   --radius: 0.75rem;
+
+  /* LIGHT MODE (Using Divine Pleasure and Doctor for backgrounds, Infinite Night for text) */
+  
+  /* Divine Pleasure #F4EFE1 */
+  --background: 44 46% 92%;
+  
+  /* Infinite Night #071037 */
+  --foreground: 229 77% 12%;
+
+  /* Doctor #F9F9F9 for cards to give slight contrast against background */
+  --card: 0 0% 98%;
+  --card-foreground: 229 77% 12%;
+
+  --popover: 0 0% 98%;
+  --popover-foreground: 229 77% 12%;
+
+  /* Rustic Wicker #B18A56 */
+  --primary: 34 37% 52%;
+  --primary-foreground: 0 0% 98%;
+
+  /* Marsh Field #D4C477 */
+  --secondary: 50 52% 65%;
+  --secondary-foreground: 229 77% 12%;
+
+  /* Muted using a slightly darker beige/grey */
+  --muted: 44 20% 85%;
+  --muted-foreground: 229 30% 40%;
+
+  /* Burnt Earth #9D4531 */
+  --accent: 11 52% 40%;
+  --accent-foreground: 0 0% 98%;
+
+  --destructive: 11 52% 40%;
+  --destructive-foreground: 0 0% 98%;
+
+  --border: 44 20% 80%;
+  --input: 44 20% 80%;
+  --ring: 34 37% 52%;
 }
 
-/* Force dark mode tokens for the entire app based on the palette */
-:root, .dark {
+.dark {
   /* Infinite Night #071037 */
   --background: 229 77% 12%;
   /* Divine Pleasure #F4EFE1 */
@@ -95,9 +132,9 @@
 
 @layer utilities {
   .text-glow {
-    text-shadow: 0 0 40px hsl(var(--primary) / 0.5);
+    text-shadow: 0 0 40px hsl(var(--primary) / 0.3);
   }
   .bg-noise {
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
   }
 }

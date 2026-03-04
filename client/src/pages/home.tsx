@@ -45,20 +45,20 @@ export default function Home() {
       {/* Navigation */}
       <nav className="w-full flex items-center justify-between px-8 py-6 max-w-7xl mx-auto relative z-10">
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-            <LineChart className="w-5 h-5 text-infinite-night" />
+          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-sm">
+            <LineChart className="w-5 h-5 text-white" />
           </div>
-          <span className="font-display font-bold text-2xl tracking-tight text-divine-pleasure">
+          <span className="font-display font-bold text-2xl tracking-tight text-foreground">
             BiClaw
           </span>
         </div>
-        <div className="hidden md:flex items-center gap-8 text-sm font-medium text-divine-pleasure/80">
-          <a href="#how-it-works" className="hover:text-divine-pleasure transition-colors">How it Works</a>
-          <a href="#features" className="hover:text-divine-pleasure transition-colors">Features</a>
-          <a href="#pricing" className="hover:text-divine-pleasure transition-colors">Pricing</a>
+        <div className="hidden md:flex items-center gap-8 text-sm font-medium text-foreground/80">
+          <a href="#how-it-works" className="hover:text-primary transition-colors">How it Works</a>
+          <a href="#features" className="hover:text-primary transition-colors">Features</a>
+          <a href="#pricing" className="hover:text-primary transition-colors">Pricing</a>
         </div>
         <div>
-          <Button variant="outline" className="border-border hover:bg-card/50 hidden md:flex">
+          <Button variant="outline" className="border-border hover:bg-card/50 hidden md:flex bg-background shadow-sm">
             Login
           </Button>
         </div>
@@ -69,14 +69,14 @@ export default function Home() {
         
         {/* Left Copy */}
         <div className="flex flex-col gap-8">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-card border border-border w-fit">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-card border border-border w-fit shadow-sm">
             <Sparkles className="w-4 h-4 text-marsh-field" />
-            <span className="text-sm font-medium text-divine-pleasure/80">
+            <span className="text-sm font-medium text-foreground/80">
               The BI tool you actually use
             </span>
           </div>
           
-          <h1 className="text-5xl lg:text-7xl font-display font-bold leading-[1.1] text-glow">
+          <h1 className="text-5xl lg:text-7xl font-display font-bold leading-[1.1] text-glow-light">
             Your data team,<br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-marsh-field to-accent">
               in your WhatsApp.
@@ -88,10 +88,10 @@ export default function Home() {
           </p>
           
           <div className="flex items-center gap-4 pt-4">
-            <Button size="lg" className="bg-primary hover:bg-primary/90 text-infinite-night font-bold px-8 h-14 rounded-xl text-lg transition-transform hover:scale-105 active:scale-95">
+            <Button size="lg" className="bg-primary hover:bg-primary/90 text-white font-bold px-8 h-14 rounded-xl text-lg transition-transform hover:scale-105 active:scale-95 shadow-md">
               Start Chatting
             </Button>
-            <Button size="lg" variant="ghost" className="h-14 px-8 rounded-xl text-lg hover:bg-card">
+            <Button size="lg" variant="outline" className="h-14 px-8 rounded-xl text-lg hover:bg-card/50 bg-background border-border shadow-sm">
               See Demo
             </Button>
           </div>
@@ -99,12 +99,12 @@ export default function Home() {
           <div className="flex items-center gap-4 text-sm text-muted-foreground mt-8">
             <div className="flex -space-x-2">
               {[1, 2, 3, 4].map((i) => (
-                <div key={i} className="w-8 h-8 rounded-full bg-card border-2 border-background overflow-hidden">
+                <div key={i} className="w-8 h-8 rounded-full bg-card border-2 border-background overflow-hidden shadow-sm">
                   <img src={`https://i.pravatar.cc/100?img=${i + 10}`} alt="Avatar" className="w-full h-full object-cover" />
                 </div>
               ))}
             </div>
-            <p>Join 500+ founders getting morning briefs</p>
+            <p className="font-medium text-foreground/80">Join 500+ founders getting morning briefs</p>
           </div>
         </div>
 
@@ -112,17 +112,17 @@ export default function Home() {
         <div className="relative">
           <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent blur-3xl" />
           
-          <div className="w-full max-w-[420px] mx-auto bg-card/80 backdrop-blur-xl border border-border rounded-2xl shadow-2xl overflow-hidden flex flex-col h-[550px] relative z-10 ring-1 ring-white/10">
+          <div className="w-full max-w-[420px] mx-auto bg-card/90 backdrop-blur-xl border border-border rounded-2xl shadow-2xl overflow-hidden flex flex-col h-[550px] relative z-10 ring-1 ring-black/5">
             {/* Header */}
-            <div className="px-6 py-4 border-b border-border bg-card/50 flex items-center gap-4">
+            <div className="px-6 py-4 border-b border-border bg-card/80 flex items-center gap-4">
               <div className="relative">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-                  <LineChart className="w-5 h-5 text-infinite-night" />
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-sm">
+                  <LineChart className="w-5 h-5 text-white" />
                 </div>
                 <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-card" />
               </div>
               <div>
-                <h3 className="font-display font-semibold text-divine-pleasure">BiClaw</h3>
+                <h3 className="font-display font-semibold text-foreground">BiClaw</h3>
                 <p className="text-xs text-muted-foreground">Always active</p>
               </div>
             </div>
@@ -139,10 +139,10 @@ export default function Home() {
                     className={`flex ${msg.role === 'agent' ? 'justify-start' : 'justify-end'}`}
                   >
                     <div
-                      className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-relaxed ${
+                      className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-relaxed shadow-sm ${
                         msg.role === 'agent'
-                          ? 'bg-muted text-divine-pleasure rounded-tl-none'
-                          : 'bg-primary text-infinite-night font-medium rounded-tr-none'
+                          ? 'bg-muted/50 text-foreground rounded-tl-none border border-border/50'
+                          : 'bg-primary text-white font-medium rounded-tr-none'
                       }`}
                     >
                       {msg.text}
@@ -154,19 +154,19 @@ export default function Home() {
             </div>
 
             {/* Input Area */}
-            <form onSubmit={handleSend} className="p-4 bg-card/50 border-t border-border">
+            <form onSubmit={handleSend} className="p-4 bg-card border-t border-border">
               <div className="relative flex items-center">
                 <input
                   type="text"
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   placeholder="Type a message..."
-                  className="w-full bg-background/50 border border-border rounded-full pl-4 pr-12 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 text-divine-pleasure placeholder:text-muted-foreground transition-all"
+                  className="w-full bg-background border border-border rounded-full pl-4 pr-12 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 text-foreground placeholder:text-muted-foreground transition-all shadow-sm"
                 />
                 <button
                   type="submit"
                   disabled={!input.trim()}
-                  className="absolute right-2 w-8 h-8 flex items-center justify-center rounded-full bg-primary text-infinite-night disabled:opacity-50 transition-transform active:scale-95 hover:scale-105"
+                  className="absolute right-2 w-8 h-8 flex items-center justify-center rounded-full bg-primary text-white disabled:opacity-50 transition-transform active:scale-95 hover:scale-105 shadow-sm"
                 >
                   <Send className="w-4 h-4" />
                 </button>
@@ -175,23 +175,23 @@ export default function Home() {
           </div>
 
           {/* Decorative floating elements */}
-          <div className="absolute -left-12 top-20 bg-card border border-border p-4 rounded-xl shadow-xl flex items-center gap-3 animate-pulse" style={{ animationDuration: '4s' }}>
+          <div className="absolute -left-12 top-20 bg-card border border-border p-4 rounded-xl shadow-lg flex items-center gap-3 animate-pulse" style={{ animationDuration: '4s' }}>
             <div className="p-2 bg-marsh-field/20 rounded-lg text-marsh-field">
               <TrendingUp className="w-5 h-5" />
             </div>
             <div>
               <p className="text-xs text-muted-foreground font-medium">Revenue Today</p>
-              <p className="text-sm font-bold text-divine-pleasure">$4,250.00</p>
+              <p className="text-sm font-bold text-foreground">$4,250.00</p>
             </div>
           </div>
 
-          <div className="absolute -right-8 bottom-32 bg-card border border-border p-4 rounded-xl shadow-xl flex items-center gap-3 animate-pulse" style={{ animationDuration: '5s', animationDelay: '1s' }}>
+          <div className="absolute -right-8 bottom-32 bg-card border border-border p-4 rounded-xl shadow-lg flex items-center gap-3 animate-pulse" style={{ animationDuration: '5s', animationDelay: '1s' }}>
             <div className="p-2 bg-accent/20 rounded-lg text-accent">
               <BarChart3 className="w-5 h-5" />
             </div>
             <div>
               <p className="text-xs text-muted-foreground font-medium">Meta ROAS</p>
-              <p className="text-sm font-bold text-divine-pleasure">3.2x</p>
+              <p className="text-sm font-bold text-foreground">3.2x</p>
             </div>
           </div>
 
@@ -240,31 +240,31 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-card border border-border rounded-2xl p-8 hover:-translate-y-1 transition-transform">
-              <div className="w-12 h-12 rounded-xl bg-primary/20 text-primary flex items-center justify-center mb-6">
+            <div className="bg-card border border-border rounded-2xl p-8 hover:-translate-y-1 transition-transform shadow-sm">
+              <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-6">
                 <MessageCircle className="w-6 h-6" />
               </div>
-              <h3 className="text-xl font-bold text-divine-pleasure mb-3">Conversational UX</h3>
+              <h3 className="text-xl font-bold text-foreground mb-3">Conversational UX</h3>
               <p className="text-muted-foreground">
                 Ask "How was revenue yesterday?" and get instant answers. No more digging through charts to find the number you need.
               </p>
             </div>
             
-            <div className="bg-card border border-border rounded-2xl p-8 hover:-translate-y-1 transition-transform">
-              <div className="w-12 h-12 rounded-xl bg-accent/20 text-accent flex items-center justify-center mb-6">
+            <div className="bg-card border border-border rounded-2xl p-8 hover:-translate-y-1 transition-transform shadow-sm">
+              <div className="w-12 h-12 rounded-xl bg-accent/10 text-accent flex items-center justify-center mb-6">
                 <Zap className="w-6 h-6" />
               </div>
-              <h3 className="text-xl font-bold text-divine-pleasure mb-3">Proactive Briefs</h3>
+              <h3 className="text-xl font-bold text-foreground mb-3">Proactive Briefs</h3>
               <p className="text-muted-foreground">
                 Wake up to a daily summary combining your Shopify sales and Meta ad spend. See your true ROAS before you even get out of bed.
               </p>
             </div>
 
-            <div className="bg-card border border-border rounded-2xl p-8 hover:-translate-y-1 transition-transform">
+            <div className="bg-card border border-border rounded-2xl p-8 hover:-translate-y-1 transition-transform shadow-sm">
               <div className="w-12 h-12 rounded-xl bg-marsh-field/20 text-marsh-field flex items-center justify-center mb-6">
                 <LineChart className="w-6 h-6" />
               </div>
-              <h3 className="text-xl font-bold text-divine-pleasure mb-3">Multi-Source Sync</h3>
+              <h3 className="text-xl font-bold text-foreground mb-3">Multi-Source Sync</h3>
               <p className="text-muted-foreground">
                 Connects directly to your platforms via APIs, Webhooks, or even parses your order emails for unsupported platforms.
               </p>
@@ -274,13 +274,13 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-border mt-auto bg-card/30">
+      <footer className="border-t border-border mt-auto bg-card/50">
         <div className="max-w-7xl mx-auto px-8 py-12 flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex items-center gap-2">
-            <div className="w-6 h-6 rounded-md bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-              <LineChart className="w-3 h-3 text-infinite-night" />
+            <div className="w-6 h-6 rounded-md bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-sm">
+              <LineChart className="w-3 h-3 text-white" />
             </div>
-            <span className="font-display font-bold text-lg text-divine-pleasure">BiClaw</span>
+            <span className="font-display font-bold text-lg text-foreground">BiClaw</span>
           </div>
           <p className="text-muted-foreground text-sm">
             © 2026 BiClaw. Conversational intelligence for modern ecommerce.
