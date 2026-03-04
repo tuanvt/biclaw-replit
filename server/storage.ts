@@ -1,9 +1,10 @@
-import { eq } from "drizzle-orm";
+import { eq, desc } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/node-postgres";
 import {
-  leads, chatSessions, chatMessages,
+  leads, chatSessions, chatMessages, blogPosts,
   type Lead, type InsertLead,
-  type ChatSession, type ChatMessage, type InsertChatMessage
+  type ChatSession, type ChatMessage, type InsertChatMessage,
+  type BlogPost, type InsertBlogPost
 } from "@shared/schema";
 
 export interface IStorage {
@@ -13,6 +14,9 @@ export interface IStorage {
   getChatSession(id: string): Promise<ChatSession | undefined>;
   addMessage(message: InsertChatMessage): Promise<ChatMessage>;
   getMessages(sessionId: string): Promise<ChatMessage[]>;
+  getAllBlogPosts(): Promise<BlogPost[]>;
+  getBlogPostBySlug(slug: string): Promise<BlogPost | undefined>;
+  createBlogPost(post: InsertBlogPost): Promise<BlogPost>;
 }
 
 const db = drizzle(process.env.DATABASE_URL!);
@@ -45,6 +49,20 @@ export class DatabaseStorage implements IStorage {
 
   async getMessages(sessionId: string): Promise<ChatMessage[]> {
     return db.select().from(chatMessages).where(eq(chatMessages.sessionId, sessionId));
+  }
+
+  async getAllBlogPosts(): Promise<BlogPost[]> {
+    return db.select().from(blogPosts).orderBy(desc(blogPosts.publishedAt));
+  }
+
+  async getBlogPostBySlug(slug: string): Promise<BlogPost | undefined> {
+    const [post] = await db.select().from(blogPosts).where(eq(blogPosts.slug, slug));
+    return post;
+  }
+
+  async createBlogPost(post: InsertBlogPost): Promise<BlogPost> {
+    const [created] = await db.insert(blogPosts).values(post).returning();
+    return created;
   }
 }
 

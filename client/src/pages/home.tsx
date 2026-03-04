@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Send, LineChart, MessageCircle, BarChart3, TrendingUp, Zap, Sparkles, BrainCircuit, Activity, X, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { apiRequest } from "@/lib/queryClient";
+import { Link } from "wouter";
 
 export default function Home() {
   const [messages, setMessages] = useState<{role: 'agent' | 'user', text: string}[]>([
@@ -101,8 +102,8 @@ export default function Home() {
           </span>
         </div>
         <div className="hidden md:flex items-center gap-8 text-sm font-medium text-foreground/70">
-          <a href="#how-it-works" className="hover:text-primary transition-colors" data-testid="link-how-it-works">How it Works</a>
           <a href="#features" className="hover:text-primary transition-colors" data-testid="link-features">Features</a>
+          <Link href="/blog" className="hover:text-primary transition-colors" data-testid="link-blog">Blog</Link>
           <a href="#pricing" className="hover:text-primary transition-colors" data-testid="link-pricing">Pricing</a>
         </div>
         <div>
