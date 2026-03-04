@@ -10,13 +10,13 @@ BiClaw provides a **clean, modern, and solid** interface with a focus on high co
 - **AI Vibes:** We incorporate subtle grid backgrounds, pulse animations, typing indicators, and `BrainCircuit` icons to emphasize the intelligent, autonomous nature of the agent.
 
 ## 2. Color Palette
-The color palette is derived from the "Mindful Palettes No. 257" selection, with roles adjusted to highlight the brand's analytical power.
+The color palette is derived from the "Mindful Palettes No. 257" selection, balancing the energetic primary action color with warm secondary accents.
 
 - **Backgrounds:** Pure white (`#FFFFFF`) to create an ultra-clean canvas.
 - **Infinite Night (`#071037`):** The primary text color. Used for headings, body text, and providing high contrast against the white backgrounds.
-- **Burnt Earth (`#9D4531`):** The Primary Action color. This vibrant red/orange draws the eye to calls-to-action, active states, and user messages.
-- **Rustic Wicker (`#B18A56`):** Relegated to a secondary/accent role for non-primary highlights.
-- **Marsh Field (`#D4C477`):** A tertiary accent used for decorative elements and badges.
+- **Burnt Earth (`#9D4531`):** The Primary Action color. This vibrant red/orange draws the eye to primary calls-to-action, the main chat send button, and user messages.
+- **Rustic Wicker (`#B18A56`):** The Secondary accent. This warm yellow/gold provides touches of branding, used for highlighting badges, secondary buttons, and specific icon containers.
+- **Marsh Field (`#D4C477`):** A tertiary accent used sparingly for decorative elements.
 - **Muted Elements (`#F5F5F5`):** Light grays are used for the AI's chat bubble background to distinguish it from the user's vibrant bubbles.
 
 ## 3. Typography
@@ -48,7 +48,7 @@ All colors are defined as HSL variables in `index.css` via `@theme inline` allow
   --color-background: hsl(0 0% 100%); /* Pure White */
   --color-foreground: hsl(229 77% 12%); /* Infinite Night */
   --color-primary: hsl(11 52% 40%); /* Burnt Earth (Red/Orange) */
-  --color-secondary: hsl(34 37% 52%); /* Rustic Wicker */
+  --color-secondary: hsl(34 37% 52%); /* Rustic Wicker (Yellow/Gold) */
   /* ... */
 }
 ```

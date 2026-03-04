@@ -62,7 +62,7 @@
   --primary: 11 52% 40%;
   --primary-foreground: 0 0% 100%;
 
-  /* Rustic Wicker #B18A56 */
+  /* Rustic Wicker #B18A56 as Secondary for highlights/warm touches */
   --secondary: 34 37% 52%;
   --secondary-foreground: 0 0% 100%;
 
@@ -70,7 +70,7 @@
   --muted: 0 0% 96%;
   --muted-foreground: 229 30% 40%;
 
-  /* Marsh Field #D4C477 */
+  /* Marsh Field #D4C477 as Accent */
   --accent: 50 52% 65%;
   --accent-foreground: 229 77% 12%;
 

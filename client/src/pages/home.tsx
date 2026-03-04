@@ -73,8 +73,8 @@ export default function Home() {
         <div className="flex flex-col gap-8">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-border w-fit shadow-sm">
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
             </span>
             <span className="text-sm font-bold text-foreground/80 tracking-wide uppercase text-xs">
               AI Powered Business Intelligence
@@ -85,7 +85,7 @@ export default function Home() {
             Chat with your<br />
             <span className="text-primary relative inline-block">
               business data.
-              <svg className="absolute w-full h-4 -bottom-1 left-0 text-secondary/30" viewBox="0 0 100 10" preserveAspectRatio="none">
+              <svg className="absolute w-full h-4 -bottom-1 left-0 text-accent" viewBox="0 0 100 10" preserveAspectRatio="none">
                 <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="8" fill="transparent" strokeLinecap="round"/>
               </svg>
             </span>
@@ -99,7 +99,7 @@ export default function Home() {
             <Button size="lg" className="bg-primary hover:bg-primary/90 text-white font-bold px-8 h-14 rounded-xl text-lg transition-all hover:shadow-lg hover:shadow-primary/30 active:scale-95">
               Start Chatting
             </Button>
-            <Button size="lg" variant="outline" className="h-14 px-8 rounded-xl text-lg hover:bg-muted bg-white border-border shadow-sm font-medium">
+            <Button size="lg" variant="outline" className="h-14 px-8 rounded-xl text-lg hover:bg-secondary/10 hover:text-secondary-foreground hover:border-secondary/50 bg-white border-border shadow-sm font-medium transition-colors">
               See Demo
             </Button>
           </div>
@@ -123,17 +123,17 @@ export default function Home() {
             <div className="px-6 py-4 border-b border-border bg-white flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <div className="relative">
-                  <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center shadow-sm">
+                  <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center shadow-sm">
                     <BrainCircuit className="w-5 h-5 text-white" />
                   </div>
                   <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-white" />
                 </div>
                 <div>
                   <h3 className="font-display font-bold text-foreground leading-none">BiClaw AI</h3>
-                  <p className="text-xs text-primary font-medium mt-1">Online & Analyzing</p>
+                  <p className="text-xs text-secondary font-medium mt-1">Online & Analyzing</p>
                 </div>
               </div>
-              <Activity className="w-5 h-5 text-muted-foreground/50" />
+              <Activity className="w-5 h-5 text-secondary/50" />
             </div>
 
             {/* Chat Area */}
@@ -200,7 +200,7 @@ export default function Home() {
 
           {/* Decorative floating elements */}
           <div className="absolute -left-16 top-16 bg-white border border-border p-4 rounded-xl shadow-xl flex items-center gap-4 animate-pulse" style={{ animationDuration: '4s' }}>
-            <div className="p-2.5 bg-primary/10 rounded-lg text-primary">
+            <div className="p-2.5 bg-accent/20 rounded-lg text-accent">
               <TrendingUp className="w-5 h-5" />
             </div>
             <div>
@@ -210,7 +210,7 @@ export default function Home() {
           </div>
 
           <div className="absolute -right-12 bottom-28 bg-white border border-border p-4 rounded-xl shadow-xl flex items-center gap-4 animate-pulse" style={{ animationDuration: '5s', animationDelay: '1s' }}>
-            <div className="p-2.5 bg-secondary/20 rounded-lg text-secondary-foreground">
+            <div className="p-2.5 bg-primary/20 rounded-lg text-primary">
               <BarChart3 className="w-5 h-5" />
             </div>
             <div>
@@ -270,7 +270,7 @@ export default function Home() {
             </div>
             
             <div className="bg-white border border-border rounded-2xl p-8 hover:-translate-y-1 transition-transform shadow-md hover:shadow-xl">
-              <div className="w-14 h-14 rounded-xl bg-secondary/20 text-secondary-foreground flex items-center justify-center mb-6">
+              <div className="w-14 h-14 rounded-xl bg-accent/20 text-accent flex items-center justify-center mb-6">
                 <Zap className="w-7 h-7" />
               </div>
               <h3 className="text-xl font-bold text-foreground mb-3">Proactive Briefs</h3>
@@ -280,7 +280,7 @@ export default function Home() {
             </div>
 
             <div className="bg-white border border-border rounded-2xl p-8 hover:-translate-y-1 transition-transform shadow-md hover:shadow-xl">
-              <div className="w-14 h-14 rounded-xl bg-accent/20 text-accent-foreground flex items-center justify-center mb-6">
+              <div className="w-14 h-14 rounded-xl bg-secondary/20 text-secondary flex items-center justify-center mb-6">
                 <LineChart className="w-7 h-7" />
               </div>
               <h3 className="text-xl font-bold text-foreground mb-3">Multi-Source Sync</h3>
