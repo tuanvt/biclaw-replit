@@ -18,15 +18,15 @@ BiClaw is a conversational AI business intelligence tool that lives in WhatsApp.
 - **Burnt Earth** (`#9D4531`) — primary (red/orange) for CTAs
 
 ## Pages
-- `/` — Landing page with hero, chat widget, features, lead modal
+- `/` — Landing page with full content from biclaw.app: hero, scrolling integrations marquee, "not another wrapper" comparisons, demo scenario cards (ads/competitors/research), security bento grid, before/after comparison, testimonials, 3-step setup, live demo with chat widget, pricing cards, FAQ accordion, final CTA
 - `/blog` — Blog listing with featured post + grid of articles
 - `/blog/:slug` — Blog detail with optimized reading layout (680px content column)
 
 ## Key Files
-- `client/src/pages/home.tsx` — Landing page with chat widget + lead modal
+- `client/src/pages/home.tsx` — Landing page (all sections + chat widget + lead modal)
 - `client/src/pages/blog.tsx` — Blog listing page
 - `client/src/pages/blog-post.tsx` — Blog article detail page
-- `client/src/index.css` — Tailwind v4 theme with CSS variables
+- `client/src/index.css` — Tailwind v4 theme with CSS variables + marquee animation
 - `shared/schema.ts` — Database schema (leads, chat_sessions, chat_messages, blog_posts)
 - `server/routes.ts` — API routes + blog seed data
 - `server/storage.ts` — Database storage layer with Drizzle
@@ -45,9 +45,12 @@ BiClaw is a conversational AI business intelligence tool that lives in WhatsApp.
 - **DM Sans** — Body text (font-sans)
 
 ## Design Decisions
-- No gradients — all solid color fills
+- No gradients — all solid color fills only
+- No non-palette colors — everything uses primary/secondary/accent/foreground/muted
 - White-dominant, clean light theme with AI aesthetic
-- Chat widget uses contextual demo responses based on keywords (revenue, ads, shopee)
-- Floating data cards with pulse animation for visual interest
-- Blog detail uses 680px max-width column for optimal reading line length
-- Blog posts seeded on server startup (6 articles covering insights, tutorials, case studies)
+- Chat widget uses contextual demo responses based on keywords
+- Floating data cards with pulse/motion animations for visual interest
+- Scrolling integration logo marquee with CSS keyframes
+- Blog detail uses 680px max-width column for optimal reading
+- Blog posts seeded on server startup (6 articles)
+- All CTAs say "Start Free Trial" consistently (no waitlist copy)
