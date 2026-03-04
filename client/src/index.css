@@ -45,41 +45,41 @@
 
   /* LIGHT MODE - Solid colors, lots of white */
   
-  /* Doctor #F9F9F9 for subtle background to make pure white cards pop */
-  --background: 0 0% 98%;
+  /* Pure white background for maximum cleanliness and "more white" feel */
+  --background: 0 0% 100%;
   
   /* Infinite Night #071037 */
   --foreground: 229 77% 12%;
 
-  /* Pure White for cards to give contrast against the slight off-white background */
+  /* Pure White for cards, maybe add a very subtle border/shadow */
   --card: 0 0% 100%;
   --card-foreground: 229 77% 12%;
 
   --popover: 0 0% 100%;
   --popover-foreground: 229 77% 12%;
 
-  /* Rustic Wicker #B18A56 */
-  --primary: 34 37% 52%;
+  /* Burnt Earth #9D4531 as Primary for Actions */
+  --primary: 11 52% 40%;
   --primary-foreground: 0 0% 100%;
 
-  /* Marsh Field #D4C477 */
-  --secondary: 50 52% 65%;
-  --secondary-foreground: 229 77% 12%;
+  /* Rustic Wicker #B18A56 */
+  --secondary: 34 37% 52%;
+  --secondary-foreground: 0 0% 100%;
 
-  /* Muted using a slightly darker beige/grey */
-  --muted: 44 20% 90%;
+  /* Muted using a very light gray/off-white */
+  --muted: 0 0% 96%;
   --muted-foreground: 229 30% 40%;
 
-  /* Burnt Earth #9D4531 */
-  --accent: 11 52% 40%;
-  --accent-foreground: 0 0% 100%;
+  /* Marsh Field #D4C477 */
+  --accent: 50 52% 65%;
+  --accent-foreground: 229 77% 12%;
 
   --destructive: 11 52% 40%;
   --destructive-foreground: 0 0% 100%;
 
-  --border: 44 10% 85%;
-  --input: 44 10% 85%;
-  --ring: 34 37% 52%;
+  --border: 0 0% 90%;
+  --input: 0 0% 90%;
+  --ring: 11 52% 40%;
 }
 
 @layer base {

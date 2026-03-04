@@ -1,15 +1,16 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Send, LineChart, MessageCircle, BarChart3, TrendingUp, Zap, Sparkles } from "lucide-react";
+import { Send, LineChart, MessageCircle, BarChart3, TrendingUp, Zap, Sparkles, BrainCircuit, Activity } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function Home() {
   const [messages, setMessages] = useState<{role: 'agent' | 'user', text: string}[]>([
-    { role: 'agent', text: "Hi! I'm BiClaw — a business data analyst that lives in your WhatsApp." },
-    { role: 'agent', text: "I can connect to your Shopify store, Facebook Ads, Shopee, or Google Sheets — and send you a morning brief every day." },
+    { role: 'agent', text: "Hi! I'm BiClaw — your AI business analyst." },
+    { role: 'agent', text: "I can connect to your Shopify store, Facebook Ads, or Shopee, and analyze your data instantly." },
     { role: 'agent', text: "Want to see what I can do? Tell me about your business. What do you sell?" }
   ]);
   const [input, setInput] = useState("");
+  const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -18,7 +19,7 @@ export default function Home() {
 
   useEffect(() => {
     scrollToBottom();
-  }, [messages]);
+  }, [messages, isTyping]);
 
   const handleSend = (e: React.FormEvent) => {
     e.preventDefault();
@@ -26,35 +27,40 @@ export default function Home() {
 
     setMessages(prev => [...prev, { role: 'user', text: input }]);
     setInput("");
+    setIsTyping(true);
 
-    // Simulate agent typing
+    // Simulate AI thinking and typing
     setTimeout(() => {
+      setIsTyping(false);
       setMessages(prev => [...prev, {
         role: 'agent',
-        text: "That sounds like a great market! I can pull your recent revenue numbers and ad spend. Want me to take a quick look at your storefront?"
+        text: "Analyzing... That sounds like a great market! I can pull your recent revenue numbers and ad spend. Want me to take a quick look at your storefront?"
       }]);
-    }, 1500);
+    }, 2000);
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground bg-noise selection:bg-primary/30 relative overflow-hidden flex flex-col">
+    <div className="min-h-screen bg-background text-foreground relative overflow-hidden flex flex-col font-sans">
+      {/* Subtle grid background for tech/AI vibe */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-50 pointer-events-none" />
+
       {/* Navigation */}
       <nav className="w-full flex items-center justify-between px-8 py-6 max-w-7xl mx-auto relative z-10">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center shadow-sm">
-            <LineChart className="w-5 h-5 text-white" />
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center shadow-lg shadow-primary/20">
+            <BrainCircuit className="w-6 h-6 text-white" />
           </div>
           <span className="font-display font-bold text-2xl tracking-tight text-foreground">
             BiClaw
           </span>
         </div>
-        <div className="hidden md:flex items-center gap-8 text-sm font-medium text-foreground/80">
+        <div className="hidden md:flex items-center gap-8 text-sm font-medium text-foreground/70">
           <a href="#how-it-works" className="hover:text-primary transition-colors">How it Works</a>
           <a href="#features" className="hover:text-primary transition-colors">Features</a>
           <a href="#pricing" className="hover:text-primary transition-colors">Pricing</a>
         </div>
         <div>
-          <Button variant="outline" className="border-border hover:bg-card/50 hidden md:flex bg-card shadow-sm">
+          <Button variant="outline" className="border-border hover:bg-muted hidden md:flex bg-white shadow-sm font-medium">
             Login
           </Button>
         </div>
@@ -65,29 +71,35 @@ export default function Home() {
         
         {/* Left Copy */}
         <div className="flex flex-col gap-8">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-card border border-border w-fit shadow-sm">
-            <Sparkles className="w-4 h-4 text-marsh-field" />
-            <span className="text-sm font-medium text-foreground/80">
-              The BI tool you actually use
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-border w-fit shadow-sm">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+            </span>
+            <span className="text-sm font-bold text-foreground/80 tracking-wide uppercase text-xs">
+              AI Powered Business Intelligence
             </span>
           </div>
           
-          <h1 className="text-5xl lg:text-7xl font-display font-bold leading-[1.1]">
-            Your data team,<br />
-            <span className="text-primary">
-              in your WhatsApp.
+          <h1 className="text-6xl lg:text-7xl font-display font-extrabold leading-[1.05] tracking-tight">
+            Chat with your<br />
+            <span className="text-primary relative inline-block">
+              business data.
+              <svg className="absolute w-full h-4 -bottom-1 left-0 text-secondary/30" viewBox="0 0 100 10" preserveAspectRatio="none">
+                <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="8" fill="transparent" strokeLinecap="round"/>
+              </svg>
             </span>
           </h1>
           
           <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-md">
-            No dashboards. No setup wizards. Just connect your Shopify and Meta Ads, and get your morning brief delivered via chat.
+            No complex dashboards or SQL queries. Just connect your stores and ad accounts, and ask questions naturally in WhatsApp.
           </p>
           
           <div className="flex items-center gap-4 pt-4">
-            <Button size="lg" className="bg-primary hover:bg-primary/90 text-white font-bold px-8 h-14 rounded-xl text-lg transition-transform hover:scale-105 active:scale-95 shadow-md">
+            <Button size="lg" className="bg-primary hover:bg-primary/90 text-white font-bold px-8 h-14 rounded-xl text-lg transition-all hover:shadow-lg hover:shadow-primary/30 active:scale-95">
               Start Chatting
             </Button>
-            <Button size="lg" variant="outline" className="h-14 px-8 rounded-xl text-lg hover:bg-muted bg-card border-border shadow-sm">
+            <Button size="lg" variant="outline" className="h-14 px-8 rounded-xl text-lg hover:bg-muted bg-white border-border shadow-sm font-medium">
               See Demo
             </Button>
           </div>
@@ -95,34 +107,37 @@ export default function Home() {
           <div className="flex items-center gap-4 text-sm text-muted-foreground mt-8">
             <div className="flex -space-x-2">
               {[1, 2, 3, 4].map((i) => (
-                <div key={i} className="w-8 h-8 rounded-full bg-card border-2 border-background overflow-hidden shadow-sm">
-                  <img src={`https://i.pravatar.cc/100?img=${i + 10}`} alt="Avatar" className="w-full h-full object-cover" />
+                <div key={i} className="w-8 h-8 rounded-full bg-white border-2 border-white overflow-hidden shadow-sm">
+                  <img src={`https://i.pravatar.cc/100?img=${i + 10}`} alt="Avatar" className="w-full h-full object-cover grayscale opacity-80" />
                 </div>
               ))}
             </div>
-            <p className="font-medium text-foreground/80">Join 500+ founders getting morning briefs</p>
+            <p className="font-medium text-foreground/80">Trusted by 500+ modern founders</p>
           </div>
         </div>
 
         {/* Right Chat Widget */}
         <div className="relative">
-          <div className="w-full max-w-[420px] mx-auto bg-card border border-border rounded-2xl shadow-xl overflow-hidden flex flex-col h-[550px] relative z-10">
+          <div className="w-full max-w-[420px] mx-auto bg-white border border-border rounded-2xl shadow-2xl shadow-foreground/5 overflow-hidden flex flex-col h-[550px] relative z-10">
             {/* Header */}
-            <div className="px-6 py-4 border-b border-border bg-card flex items-center gap-4">
-              <div className="relative">
-                <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center shadow-sm">
-                  <LineChart className="w-5 h-5 text-white" />
+            <div className="px-6 py-4 border-b border-border bg-white flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="relative">
+                  <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center shadow-sm">
+                    <BrainCircuit className="w-5 h-5 text-white" />
+                  </div>
+                  <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-white" />
                 </div>
-                <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-card" />
+                <div>
+                  <h3 className="font-display font-bold text-foreground leading-none">BiClaw AI</h3>
+                  <p className="text-xs text-primary font-medium mt-1">Online & Analyzing</p>
+                </div>
               </div>
-              <div>
-                <h3 className="font-display font-semibold text-foreground">BiClaw</h3>
-                <p className="text-xs text-muted-foreground">Always active</p>
-              </div>
+              <Activity className="w-5 h-5 text-muted-foreground/50" />
             </div>
 
             {/* Chat Area */}
-            <div className="flex-1 overflow-y-auto p-6 space-y-6 bg-card">
+            <div className="flex-1 overflow-y-auto p-6 space-y-6 bg-muted/30">
               <AnimatePresence>
                 {messages.map((msg, i) => (
                   <motion.div
@@ -133,9 +148,9 @@ export default function Home() {
                     className={`flex ${msg.role === 'agent' ? 'justify-start' : 'justify-end'}`}
                   >
                     <div
-                      className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-relaxed shadow-sm ${
+                      className={`max-w-[85%] rounded-2xl px-5 py-3.5 text-sm leading-relaxed shadow-sm ${
                         msg.role === 'agent'
-                          ? 'bg-muted text-foreground rounded-tl-none border border-border/50'
+                          ? 'bg-white text-foreground rounded-tl-none border border-border/60 font-medium'
                           : 'bg-primary text-white font-medium rounded-tr-none'
                       }`}
                     >
@@ -143,49 +158,64 @@ export default function Home() {
                     </div>
                   </motion.div>
                 ))}
+                {isTyping && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.9 }}
+                    className="flex justify-start"
+                  >
+                    <div className="bg-white border border-border/60 rounded-2xl rounded-tl-none px-4 py-3 shadow-sm flex items-center gap-1">
+                      <span className="w-2 h-2 rounded-full bg-primary/40 animate-bounce" style={{ animationDelay: '0ms' }} />
+                      <span className="w-2 h-2 rounded-full bg-primary/60 animate-bounce" style={{ animationDelay: '150ms' }} />
+                      <span className="w-2 h-2 rounded-full bg-primary/80 animate-bounce" style={{ animationDelay: '300ms' }} />
+                    </div>
+                  </motion.div>
+                )}
               </AnimatePresence>
               <div ref={messagesEndRef} />
             </div>
 
             {/* Input Area */}
-            <form onSubmit={handleSend} className="p-4 bg-card border-t border-border">
+            <form onSubmit={handleSend} className="p-4 bg-white border-t border-border">
               <div className="relative flex items-center">
                 <input
                   type="text"
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
-                  placeholder="Type a message..."
-                  className="w-full bg-background border border-border rounded-full pl-4 pr-12 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 text-foreground placeholder:text-muted-foreground transition-all shadow-sm"
+                  placeholder="Ask about your revenue..."
+                  className="w-full bg-muted/50 border border-border rounded-full pl-5 pr-12 py-3.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 text-foreground placeholder:text-muted-foreground transition-all"
+                  disabled={isTyping}
                 />
                 <button
                   type="submit"
-                  disabled={!input.trim()}
-                  className="absolute right-2 w-8 h-8 flex items-center justify-center rounded-full bg-primary text-white disabled:opacity-50 transition-transform active:scale-95 hover:scale-105 shadow-sm"
+                  disabled={!input.trim() || isTyping}
+                  className="absolute right-2 w-10 h-10 flex items-center justify-center rounded-full bg-primary text-white disabled:opacity-50 transition-transform active:scale-95 hover:scale-105 shadow-sm"
                 >
-                  <Send className="w-4 h-4" />
+                  <Send className="w-4 h-4 ml-0.5" />
                 </button>
               </div>
             </form>
           </div>
 
           {/* Decorative floating elements */}
-          <div className="absolute -left-12 top-20 bg-card border border-border p-4 rounded-xl shadow-lg flex items-center gap-3 animate-pulse" style={{ animationDuration: '4s' }}>
-            <div className="p-2 bg-marsh-field/20 rounded-lg text-marsh-field">
+          <div className="absolute -left-16 top-16 bg-white border border-border p-4 rounded-xl shadow-xl flex items-center gap-4 animate-pulse" style={{ animationDuration: '4s' }}>
+            <div className="p-2.5 bg-primary/10 rounded-lg text-primary">
               <TrendingUp className="w-5 h-5" />
             </div>
             <div>
-              <p className="text-xs text-muted-foreground font-medium">Revenue Today</p>
-              <p className="text-sm font-bold text-foreground">$4,250.00</p>
+              <p className="text-xs text-muted-foreground font-bold tracking-wider uppercase mb-0.5">Revenue Today</p>
+              <p className="text-lg font-display font-bold text-foreground">$4,250.00</p>
             </div>
           </div>
 
-          <div className="absolute -right-8 bottom-32 bg-card border border-border p-4 rounded-xl shadow-lg flex items-center gap-3 animate-pulse" style={{ animationDuration: '5s', animationDelay: '1s' }}>
-            <div className="p-2 bg-accent/20 rounded-lg text-accent">
+          <div className="absolute -right-12 bottom-28 bg-white border border-border p-4 rounded-xl shadow-xl flex items-center gap-4 animate-pulse" style={{ animationDuration: '5s', animationDelay: '1s' }}>
+            <div className="p-2.5 bg-secondary/20 rounded-lg text-secondary-foreground">
               <BarChart3 className="w-5 h-5" />
             </div>
             <div>
-              <p className="text-xs text-muted-foreground font-medium">Meta ROAS</p>
-              <p className="text-sm font-bold text-foreground">3.2x</p>
+              <p className="text-xs text-muted-foreground font-bold tracking-wider uppercase mb-0.5">Meta ROAS</p>
+              <p className="text-lg font-display font-bold text-foreground">3.2x</p>
             </div>
           </div>
 
@@ -193,10 +223,10 @@ export default function Home() {
       </main>
 
       {/* Logos Section */}
-      <section className="w-full border-y border-border bg-card py-12 relative z-10 shadow-sm">
+      <section className="w-full border-y border-border bg-white py-12 relative z-10">
         <div className="max-w-7xl mx-auto px-8">
-          <p className="text-center text-sm font-medium text-muted-foreground mb-8">Connects seamlessly with your favorite tools</p>
-          <div className="flex flex-wrap justify-center gap-12 lg:gap-24 opacity-70 hover:opacity-100 transition-all duration-500">
+          <p className="text-center text-sm font-bold tracking-widest uppercase text-muted-foreground mb-8">Connects seamlessly with your data</p>
+          <div className="flex flex-wrap justify-center gap-12 lg:gap-24 opacity-60 hover:opacity-100 transition-opacity duration-500 grayscale hover:grayscale-0">
             {/* Shopify */}
             <div className="flex items-center gap-2 text-xl font-display font-bold text-foreground">
               <svg viewBox="0 0 24 24" className="w-8 h-8 fill-current text-[#95BF47]"><path d="M21.2 14.8c-.8-3.1-2.4-5.3-4.7-6.5-.4-.2-.8-.4-1.2-.5-1.1-.4-2.3-.5-3.6-.2-1.3.2-2.5.8-3.5 1.7-.5.4-1 .8-1.5 1.3-.2.2-.4.4-.6.6-1.5 1.6-2.5 3.6-2.9 5.8-.3 1.6-.2 3.3.4 4.8.6 2 1.8 3.7 3.5 4.9.4.3.8.5 1.2.7.4.2.8.4 1.3.5.5.1.9.2 1.4.2 1.1 0 2.2-.2 3.2-.6 1-.4 1.9-1 2.7-1.7 1.5-1.4 2.6-3.2 3.2-5.2.5-1.9.6-3.9.2-5.8zm-9.3-9c1.6.3 3.1 1.1 4.2 2.3.4.4.8.8 1.1 1.3.1.2.2.4.3.6 1.1 2 1.5 4.3 1.2 6.6-.3 1.8-.9 3.5-1.9 5.1-1.4 2.2-3.4 3.9-5.8 4.7-.5.2-1.1.3-1.6.3-.6 0-1.1-.1-1.7-.2-1.7-.5-3.2-1.6-4.3-3-.4-.5-.8-1-1.1-1.6-.1-.2-.2-.4-.3-.6-1-1.9-1.4-4.1-1-6.2.2-1.5.7-3 1.5-4.4 1.2-2.1 2.9-3.8 5-4.7.4-.2.8-.3 1.2-.4.5-.1 1-.2 1.5-.2.5.1 1 .2 1.6.4z"/></svg>
@@ -212,55 +242,50 @@ export default function Home() {
               <svg viewBox="0 0 24 24" className="w-8 h-8 fill-current text-[#EE4D2D]"><path d="M16.5 6.5l-9 2-2 11 9 2 9-2-2-11zm-5 13.5c-2.8 0-5-2.2-5-5s2.2-5 5-5 5 2.2 5 5-2.2 5-5 5zm0-8c-1.7 0-3 1.3-3 3s1.3 3 3 3 3-1.3 3-3-1.3-3-3-3z"/></svg>
               Shopee
             </div>
-            {/* Google Analytics */}
-            <div className="flex items-center gap-2 text-xl font-display font-bold text-foreground">
-              <svg viewBox="0 0 24 24" className="w-8 h-8 fill-current text-[#E37400]"><path d="M21 12.5v-1c0-5.5-4.5-10-10-10S1 6 1 11.5v1c0 5.5 4.5 10 10 10s10-4.5 10-10zM11 5.5v12h2v-12h-2zM7 8.5v9h2v-9H7zm8 2v7h2v-7h-2z"/></svg>
-              Analytics
-            </div>
           </div>
         </div>
       </section>
 
       {/* Feature Grid */}
-      <section id="features" className="py-24 relative z-10 bg-background">
+      <section id="features" className="py-24 relative z-10 bg-white">
         <div className="max-w-7xl mx-auto px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-display font-bold text-foreground mb-4">
-              Everything you need, nothing you don't.
+            <h2 className="text-4xl lg:text-5xl font-display font-extrabold text-foreground mb-6">
+              Intelligence without the dashboards.
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              We stripped away the clunky dashboards and complex SQL queries. Just instant answers and proactive insights.
+            <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
+              We stripped away the complex SQL queries and clunky interfaces. Just instant, intelligent answers derived from your actual business data.
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-card border border-border rounded-2xl p-8 hover:-translate-y-1 transition-transform shadow-md">
-              <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-6">
-                <MessageCircle className="w-6 h-6" />
+            <div className="bg-white border border-border rounded-2xl p-8 hover:-translate-y-1 transition-transform shadow-md hover:shadow-xl">
+              <div className="w-14 h-14 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-6">
+                <BrainCircuit className="w-7 h-7" />
               </div>
-              <h3 className="text-xl font-bold text-foreground mb-3">Conversational UX</h3>
-              <p className="text-muted-foreground">
-                Ask "How was revenue yesterday?" and get instant answers. No more digging through charts to find the number you need.
+              <h3 className="text-xl font-bold text-foreground mb-3">AI-Powered Analysis</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                Our AI understands context. Ask "How was revenue yesterday?" and get instant answers without digging through charts.
               </p>
             </div>
             
-            <div className="bg-card border border-border rounded-2xl p-8 hover:-translate-y-1 transition-transform shadow-md">
-              <div className="w-12 h-12 rounded-xl bg-accent/10 text-accent flex items-center justify-center mb-6">
-                <Zap className="w-6 h-6" />
+            <div className="bg-white border border-border rounded-2xl p-8 hover:-translate-y-1 transition-transform shadow-md hover:shadow-xl">
+              <div className="w-14 h-14 rounded-xl bg-secondary/20 text-secondary-foreground flex items-center justify-center mb-6">
+                <Zap className="w-7 h-7" />
               </div>
               <h3 className="text-xl font-bold text-foreground mb-3">Proactive Briefs</h3>
-              <p className="text-muted-foreground">
+              <p className="text-muted-foreground leading-relaxed">
                 Wake up to a daily summary combining your Shopify sales and Meta ad spend. See your true ROAS before you even get out of bed.
               </p>
             </div>
 
-            <div className="bg-card border border-border rounded-2xl p-8 hover:-translate-y-1 transition-transform shadow-md">
-              <div className="w-12 h-12 rounded-xl bg-marsh-field/20 text-marsh-field flex items-center justify-center mb-6">
-                <LineChart className="w-6 h-6" />
+            <div className="bg-white border border-border rounded-2xl p-8 hover:-translate-y-1 transition-transform shadow-md hover:shadow-xl">
+              <div className="w-14 h-14 rounded-xl bg-accent/20 text-accent-foreground flex items-center justify-center mb-6">
+                <LineChart className="w-7 h-7" />
               </div>
               <h3 className="text-xl font-bold text-foreground mb-3">Multi-Source Sync</h3>
-              <p className="text-muted-foreground">
-                Connects directly to your platforms via APIs, Webhooks, or even parses your order emails for unsupported platforms.
+              <p className="text-muted-foreground leading-relaxed">
+                Connects directly to your platforms via APIs, Webhooks, or even parses your order emails for unsupported platforms automatically.
               </p>
             </div>
           </div>
@@ -268,21 +293,21 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-border mt-auto bg-card">
-        <div className="max-w-7xl mx-auto px-8 py-12 flex flex-col md:flex-row justify-between items-center gap-6">
+      <footer className="border-t border-border mt-auto bg-white py-12">
+        <div className="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex items-center gap-2">
-            <div className="w-6 h-6 rounded-md bg-primary flex items-center justify-center shadow-sm">
-              <LineChart className="w-3 h-3 text-white" />
+            <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center shadow-sm">
+              <BrainCircuit className="w-5 h-5 text-white" />
             </div>
-            <span className="font-display font-bold text-lg text-foreground">BiClaw</span>
+            <span className="font-display font-bold text-xl text-foreground">BiClaw</span>
           </div>
-          <p className="text-muted-foreground text-sm">
+          <p className="text-muted-foreground text-sm font-medium">
             © 2026 BiClaw. Conversational intelligence for modern ecommerce.
           </p>
-          <div className="flex gap-4 text-sm font-medium">
-            <a href="#" className="text-muted-foreground hover:text-primary">Twitter</a>
-            <a href="#" className="text-muted-foreground hover:text-primary">LinkedIn</a>
-            <a href="#" className="text-muted-foreground hover:text-primary">Terms</a>
+          <div className="flex gap-6 text-sm font-bold text-muted-foreground">
+            <a href="#" className="hover:text-primary transition-colors">Twitter</a>
+            <a href="#" className="hover:text-primary transition-colors">LinkedIn</a>
+            <a href="#" className="hover:text-primary transition-colors">Terms</a>
           </div>
         </div>
       </footer>

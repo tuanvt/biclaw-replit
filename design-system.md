@@ -3,21 +3,21 @@
 This document outlines the core design choices, typography, color palette, and component principles for the BiClaw frontend application.
 
 ## 1. Core Philosophy
-BiClaw provides a **clean, modern, and solid** interface with a focus on high contrast, readable typography, and conversational UI elements. 
+BiClaw provides a **clean, modern, and solid** interface with a focus on high contrast, readability, and a pronounced AI aesthetic. 
 
 - **No Gradients:** The design strictly avoids gradients in favor of sharp, solid colors.
-- **Abundant Whitespace:** Elements breathe through generous padding and margins.
-- **Card-based Depth:** We use subtle background off-whites paired with pure white cards and delicate shadows to establish hierarchy and depth.
+- **Pure White Canvas:** We maximize the use of pure white backgrounds (`#FFFFFF`) to give the interface an expansive, clinical, and intelligent feel.
+- **AI Vibes:** We incorporate subtle grid backgrounds, pulse animations, typing indicators, and `BrainCircuit` icons to emphasize the intelligent, autonomous nature of the agent.
 
 ## 2. Color Palette
-The color palette is derived from the "Mindful Palettes No. 257" selection. We use these colors strictly as solid fills.
+The color palette is derived from the "Mindful Palettes No. 257" selection, with roles adjusted to highlight the brand's analytical power.
 
-- **Infinite Night (`#071037`):** The primary foreground color. Used for headings, bold body text, and high-contrast elements.
-- **Divine Pleasure (`#F4EFE1`):** (Reserved for specific warmth if needed, though replaced mostly by pure whites and doctors for an even cleaner look).
-- **Rustic Wicker (`#B18A56`):** The Primary brand color. Used for prominent buttons, active states, and the main branding highlights.
-- **Marsh Field (`#D4C477`):** A secondary accent used for highlights, badges, and secondary icons.
-- **Burnt Earth (`#9D4531`):** The destructive/accent color used for distinct notifications, warnings, and alternative icon highlights.
-- **Doctor (`#F9F9F9`):** The main application background. It provides a soft base that makes pure white (`#FFFFFF`) cards stand out elegantly.
+- **Backgrounds:** Pure white (`#FFFFFF`) to create an ultra-clean canvas.
+- **Infinite Night (`#071037`):** The primary text color. Used for headings, body text, and providing high contrast against the white backgrounds.
+- **Burnt Earth (`#9D4531`):** The Primary Action color. This vibrant red/orange draws the eye to calls-to-action, active states, and user messages.
+- **Rustic Wicker (`#B18A56`):** Relegated to a secondary/accent role for non-primary highlights.
+- **Marsh Field (`#D4C477`):** A tertiary accent used for decorative elements and badges.
+- **Muted Elements (`#F5F5F5`):** Light grays are used for the AI's chat bubble background to distinguish it from the user's vibrant bubbles.
 
 ## 3. Typography
 We utilize a two-font system loaded from Google Fonts to establish a distinct brand personality while maintaining excellent readability.
@@ -30,25 +30,25 @@ We utilize a two-font system loaded from Google Fonts to establish a distinct br
   - **Usage:** Body text, paragraphs, labels, chat messages, input fields.
   - **Characteristics:** Clean, highly legible at small sizes, and pairs beautifully with Outfit.
 
-## 4. Layout & Spacing
-- **Max Width:** Content is generally constrained to a `max-w-7xl` container to ensure readability on ultra-wide screens.
-- **Card Styling:** Containers and interactive elements use `rounded-2xl` for soft, approachable corners, paired with `shadow-md` or `shadow-xl` to pop off the Doctor background.
-- **Borders:** Borders are kept very subtle (`border-border` mapped to a light grey) to define edges without adding visual noise.
+## 4. Components & Interactions
+- **Chat Interface:** 
+  - The centerpiece of the application. 
+  - AI messages are placed on a light gray background with an animated typing indicator to simulate thinking.
+  - User messages are solid **Burnt Earth** to stand out.
+- **Floating Data Nodes:**
+  - Cards that pulse subtly around the chat interface to represent real-time data ingestion.
+- **Iconography:**
+  - Standard UI uses `lucide-react`. `BrainCircuit` is the primary icon representing the BiClaw agent.
 
-## 5. The Chat Interface
-As BiClaw is heavily conversational, the chat interface is a central component:
-- **User Messages:** Align right, use the solid **Primary** color with white text. Rounded corners except for the top-right.
-- **Agent Messages:** Align left, use a solid **Muted** off-white background with Infinite Night text. Rounded corners except for the top-left.
-- **Input Area:** High contrast, rounded full inputs with a solid primary send button.
-
-## 6. CSS Architecture (Tailwind v4)
+## 5. CSS Architecture (Tailwind v4)
 All colors are defined as HSL variables in `index.css` via `@theme inline` allowing standard Tailwind utility classes to automatically utilize the design system.
 
 ```css
 @theme inline {
-  --color-primary: hsl(34 37% 52%); /* Rustic Wicker */
-  --color-background: hsl(0 0% 98%); /* Doctor */
+  --color-background: hsl(0 0% 100%); /* Pure White */
   --color-foreground: hsl(229 77% 12%); /* Infinite Night */
+  --color-primary: hsl(11 52% 40%); /* Burnt Earth (Red/Orange) */
+  --color-secondary: hsl(34 37% 52%); /* Rustic Wicker */
   /* ... */
 }
 ```
